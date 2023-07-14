@@ -3,6 +3,8 @@ import indexRoute from './routes/index.routes.js'
 import userRoute from './routes/user.routes.js'
 import requestSend from './routes/solicitudAmistad.routes.js'
 
+import { PORT, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from './config.js'
+
 const app = express()
 app.use(express.json())
 
@@ -12,5 +14,11 @@ app.use(indexRoute)
 app.use(userRoute)
 app.use(requestSend)
 
-app.listen(3000)
-console.log('Server running on port 3000')
+app.use((req, res) => {
+  res.status(404).json({
+    message: 'Este endpoint no se encuentra disponible'
+  })
+})
+
+app.listen(PORT)
+console.log(`Server running on port ${PORT}`)

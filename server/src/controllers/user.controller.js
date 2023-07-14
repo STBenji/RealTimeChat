@@ -2,8 +2,17 @@ import { pool } from '../db.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-export const getUsers = (req, res) => {
-  res.send('obteniendo los usuarios')
+export const getUsers = async(req, res) => {
+
+  try {
+    const [result] = await pool.query('SELECT * FROM usuarios')
+    console.log(result)
+    res.status(200).send({ result })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({ message : 'Error al obtener los usuarios' })
+  }
+
 }
 
 export const register = async (req, res) => {
