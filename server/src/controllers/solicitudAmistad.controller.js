@@ -50,7 +50,6 @@ export const sendSolicitud = async (req, res) => {
 
     res.status(200).send({ message: 'Solicitud de amistad enviada correctamente' })
   } catch (error) {
-    console.log(error)
     res.status(500).send('Error al enviar la solicitud de amistad')
   }
 }

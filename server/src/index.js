@@ -11,8 +11,8 @@ app.use(express.json())
 app.use(indexRoute)
 
 // user routes
-app.use(userRoute)
-app.use(requestSend)
+app.use('/api', userRoute)
+app.use('/api', requestSend)
 
 app.use((req, res) => {
   res.status(404).json({
