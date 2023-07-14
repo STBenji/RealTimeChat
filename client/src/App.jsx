@@ -1,61 +1,23 @@
 import './App.css'
-import { io } from 'socket.io-client'
-import { useState, useEffect, useRef } from 'react'
-
-// const socket = io('http://localhost:3000')
+import { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { Loading } from './components/loading/loading'
+import { Login } from './components/login/login'
 
 function App() {
-    const [isConnected, setIsConnected] = useState(false)
-    const [newMessage, setNewMessage] = useState('')
-    const [messages, setMessages] = useState([])
-    const message = useRef(null)
+  const [showLoading, setShowLoading] = useState(true)
 
-    const logout = () => {
-        console.log('se ha cerrado sesión, actualmente estás offline')
-        setIsConnected(false)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoading(false)
+    }, 3000)
+
+    return () => {
+      clearTimeout(timer)
     }
+  }, [])
 
-    const login = () => {
-        console.log('conectado conectamente, actualmente estás online')
-        setIsConnected(true)
-    }
-    const handleSendMessage = (e) => {
-        e.preventDefault()
-
-        const inputValue = message.current.value
-        setNewMessage(inputValue)
-/* 
-        socket.emit('chat_message', {
-            usuario: socket.id,
-            message: inputValue,
-        })
-        console.log(inputValue) */
-    }
-
-    useEffect(() => {
-        // socket.on('connect', () => setIsConnected(false))
-
-        if (!isConnected) return
-    }, [logout])
-
-    return (
-        <main>
-            <h1>{isConnected ? ' ONLINE ' : ' OFFLINE '}</h1>
-
-            <section>
-                {/* {<span>{newMessage}</span>} */
-                    newMessage.map
-                }
-            </section>
-
-            <form onSubmit={handleSendMessage}>
-                <input type="text" ref={message} />
-                <button>Enviar</button>
-            </form>
-            <button onClick={logout}>Cerrar sesión</button>
-            <button onClick={login}>conectar</button>
-        </main>
-    )
+  return <Routes>{showLoading ? <Route path="/" element={<Loading />} /> : <Route path="/" element={<Login />} />}</Routes>
 }
 
 export default App
