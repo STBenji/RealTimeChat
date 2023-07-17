@@ -3,8 +3,8 @@
   padding: 0;
 }
 
-main {
-  background: #1ccca9;
+.containerLoading {
+  background: #623eba;
   height: 100vh;
   display: flex;
   align-items: center;
