@@ -1,0 +1,101 @@
+.body {
+  margin: 1rem;
+}
+
+.containerMenu {
+  position: relative;
+  background: #6263fb;
+  max-width: 4.5rem;
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 20px;
+  height: 95vh;
+  transition: width 0.2s ease; /* Agrega transición para animar el cambio de tamaño */
+}
+
+.containerMenuOpen {
+  position: relative;
+  background: #6263fb;
+  max-width: 12rem;
+  width: 12rem;
+  display: flex;
+
+  border-radius: 20px;
+  height: 95vh;
+  transition: width 0.2s ease; /* Ajusta el ancho del menú abierto */
+}
+
+.containerMenu nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.containerMenu nav ul li {
+  margin: 0.6rem;
+  list-style: none;
+  transition: background-color 0.4s ease-in-out, color 0.2s ease-in-out;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerMenuOpen nav ul li {
+  display: flex;
+  /* border: 2px solid red; */
+  justify-content: flex-start;
+  align-items: center;
+  color: #ffffff;
+  gap: 0.5rem;
+
+}
+
+.containerMenu nav ul li:hover {
+  background-color: #ffffff;
+}
+.containerMenuOpen nav ul li:hover {
+  color: #6263fb;
+}
+
+.containerMenu nav ul li i {
+  color: aliceblue;
+  transition: color 0.2s ease-in-out;
+}
+
+.containerMenu nav ul li:hover i {
+  color: #6263fb;
+}
+
+.containerMenu nav ul li:nth-child(1) {
+  margin-bottom: 1rem;
+}
+
+.containerMenu nav ul li:nth-child(7) {
+  margin-top: 11rem;
+}
+
+.containerMenu nav ul li:nth-child(7):hover i {
+  color: red;
+}
+
+.containerMenuOpen nav ul li:nth-child(1) {
+  margin-bottom: 1rem;
+}
+
+.containerMenuOpen nav ul li:nth-child(7) {
+  margin-top: 9.5rem;
+}
+
+.containerMenuOpen nav ul li:nth-child(7):hover {
+  color: red;
+}
+
+.active {
+  margin: auto;
+}

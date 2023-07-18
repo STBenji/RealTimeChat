@@ -1,14 +1,17 @@
 import './register.css'
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { register } from '../../api/httpRequest'
+
 
 export const Register = () => {
   const nombreRef = useRef(null)
   const apellidoRef = useRef(null)
   const correoRef = useRef(null)
   const passwordRef = useRef(null)
-
+  
+  const navigate = useNavigate()
+  
   const singIn = async (e) => {
     e.preventDefault()
     const nombre = nombreRef.current.value
@@ -20,6 +23,8 @@ export const Register = () => {
     try {
       const res = await register(data)
       const message  = res.data.message
+
+      navigate('/')
       console.log(message)
     } catch (error) {
       console.log(error.response.data.message)
@@ -28,9 +33,9 @@ export const Register = () => {
 
   return (
     <main className="containerRegister">
-      {/* <header>
+      <header className='nameApp'>
         <h3>· ChatVibe</h3> 
-      </header> */}
+      </header>
       <section className="gridContentRegister">
         <section className="formRegister">
           <header className="headerRegister">
@@ -65,9 +70,9 @@ export const Register = () => {
             </p>
           </Link>
         </section>
-        <section className="backgroundUi">
+        <section className="backgroundUiRegister">
           <span className="circleRegister"></span>
-          <span className="blur"></span>
+          <span className="blurRegister"></span>
         </section>
       </section>
     </main>

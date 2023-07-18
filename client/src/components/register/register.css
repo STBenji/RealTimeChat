@@ -79,7 +79,7 @@
 }
 
 /* Estilos de fondo */
-.backgroundUi {
+.backgroundUiRegister {
   background: #f2f2f2;
   display: grid;
   place-items: center;
@@ -99,10 +99,11 @@
   height: 200px;
   border-radius: 50%;
   background: #72a5ae;
+  animation: animation 4s infinite;
 }
 
 /* Estilos de fondo borroso */
-.blur {
+.blurRegister {
   width: 100%;
   height: 50%;
   bottom: 0;
@@ -129,5 +130,17 @@
 
   .blur {
     display: none; /* Ocultar el fondo borroso en pantallas pequeñas */
+  }
+}
+
+
+@keyframes animation {
+  0%, 100% {
+    /* transform: scale(1); */
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+    /* transform: scale(1.11); */
   }
 }

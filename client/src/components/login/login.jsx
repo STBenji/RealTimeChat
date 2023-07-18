@@ -1,14 +1,17 @@
 import './login.css'
 import { useRef, useState } from 'react'
-import Cookies from 'js-cookie'
+import Cookie from 'js-cookie'
 import { login } from '../../api/httpRequest'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Modal } from '../modals/modal'
 
 export const Login = () => {
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState('')
   const correoRef = useRef()
   const passwordRef = useRef()
+
+  const navigate = useNavigate()
 
   const loginIN = async (e) => {
     e.preventDefault()
@@ -20,7 +23,13 @@ export const Login = () => {
       const res = await login(data)
       const token = res.data.token
 
-      Cookies.set('token', token, { expires: 2, path: '/login', sameSite: 'None', secure: true })
+      Cookie.set('token', token, {
+        expires: 1,
+        sameSite: 'none',
+        secure: true
+      })
+
+      navigate('/dashboard')
     } catch (error) {
       const msg = error.response.data.message
       setAlertMessage(msg)
@@ -34,9 +43,9 @@ export const Login = () => {
 
   return (
     <main className="containerLogin">
-      {/* <header>
-        <h3>· ChatVibe</h3> 
-      </header> */}
+      <header className="nameApp">
+        <h3>· ChatVibe</h3>
+      </header>
       <section className="gridContent">
         <section className="formLogin">
           <header className="headerLogin">
@@ -55,7 +64,7 @@ export const Login = () => {
               </div>
             </section>
 
-            <button>Iniciar sesión</button>
+            <button className="buttonLogin">Iniciar sesión</button>
           </form>
           <Link to={'/register'} className="register">
             <p>
@@ -64,9 +73,9 @@ export const Login = () => {
             </p>
           </Link>
         </section>
-        <section className="backgroundUi">
-          <span className="circle"></span>
-          <span className="blur"></span>
+        <section className="backgroundUiLogin">
+          <span className="circleLogin"></span>
+          <span className="blurLogin"></span>
         </section>
       </section>
       {showAlert && <Modal title="¡Alerta!" message={alertMessage} onClose={handleCloseAlert} />}
