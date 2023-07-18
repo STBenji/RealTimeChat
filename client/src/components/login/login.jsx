@@ -1,10 +1,12 @@
 import './login.css'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Cookies from 'js-cookie'
 import { login } from '../../api/httpRequest'
-import  { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
   const correoRef = useRef()
   const passwordRef = useRef()
 
@@ -20,12 +22,17 @@ export const Login = () => {
 
       Cookies.set('token', token, { expires: 2, path: '/login', sameSite: 'None', secure: true })
     } catch (error) {
-      console.log(error.response.data.message)
+      const msg = error.response.data.message
+      setAlertMessage(msg)
+      setShowAlert(true)
     }
   }
 
+  const handleCloseAlert = () => {
+    setShowAlert(false)
+  }
+
   return (
-    
     <main className="containerLogin">
       {/* <header>
         <h3>· ChatVibe</h3> 
@@ -50,8 +57,11 @@ export const Login = () => {
 
             <button>Iniciar sesión</button>
           </form>
-          <Link to={'/register'} className='register'>
-           <p> ¿No tienes una cuenta? <span> crea una aquí.</span></p>
+          <Link to={'/register'} className="register">
+            <p>
+              {' '}
+              ¿No tienes una cuenta? <span> crea una aquí.</span>
+            </p>
           </Link>
         </section>
         <section className="backgroundUi">
@@ -59,6 +69,7 @@ export const Login = () => {
           <span className="blur"></span>
         </section>
       </section>
+      {showAlert && <Modal title="¡Alerta!" message={alertMessage} onClose={handleCloseAlert} />}
     </main>
   )
 }

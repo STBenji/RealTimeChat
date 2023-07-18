@@ -1,7 +1,3 @@
-
-
 node_modules
+package-lock
 .env
-package-lock.json
-
-

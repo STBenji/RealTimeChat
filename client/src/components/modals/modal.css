@@ -1,0 +1,89 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  padding: 16px;
+  position: relative;
+  animation: animation .3s;
+}
+
+.material-symbols-outlined {
+  width: 2rem;
+  height: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.modal-header span {
+  cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+}
+
+.modal-icon {
+  font-size: 2rem;
+  margin-right: 16px;
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Estilos para diferentes tipos de alertas */
+.modal-icon.success {
+  color: green;
+}
+
+.modal-icon.error {
+  color: red;
+}
+
+.modal-icon.warning {
+  color: orange;
+}
+
+.modal-icon.info {
+  color: blue;
+}
+
+
+
+
+@keyframes animation {
+  0% {
+    transform: scale(1.3);
+    animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    opacity: 0.1;
+  }
+  100% {
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
