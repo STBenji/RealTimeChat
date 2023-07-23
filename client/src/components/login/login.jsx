@@ -21,7 +21,7 @@ export const Login = () => {
 
     try {
       const res = await login(data)
-      const token = res.data.token
+      const token = res.data.response.info.token
 
       Cookie.set('token', token, {
         expires: 1,
