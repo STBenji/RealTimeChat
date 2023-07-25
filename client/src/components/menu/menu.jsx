@@ -27,7 +27,7 @@ export const Menu = () => {
         <nav>
           <ul>
             <li onClick={handleMenu}>
-              <i className={`fa-solid fa-bars  ${isOpenMenu ? 'active' : ''}`}></i>
+              <i className={`fa-solid fa-bars  ${isOpenMenu ? 'active fa-arrow-left' : ''}`}></i>
             </li>
             {isOpenMenu ? (
               <>

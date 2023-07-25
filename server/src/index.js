@@ -1,8 +1,9 @@
 import express from 'express'
+import cors from 'cors'
+
 import indexRoute from './routes/index.routes.js'
 import userRoute from './routes/user.routes.js'
 import requestSend from './routes/solicitudAmistad.routes.js'
-import cors from 'cors'
 
 import { PORT, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from './config.js'
 
