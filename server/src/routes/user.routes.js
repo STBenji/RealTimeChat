@@ -1,14 +1,11 @@
 import { Router } from 'express'
-import { getUsers, login, register, searchUser } from '../controllers/user.controller.js'
+import { checkUserExist, hashPassword, checkRegisterData, comparePassword, checkLoginData, createToken } from '../middlewares/user.middleware.js'
+import { register, getUsers, login } from '../controllers/user.controller.js'
 
 const router = Router()
 
-// get
 router.get('/users', getUsers)
-router.get('/searchUser', searchUser)
-
-// post
-router.post('/register', register)
-router.post('/login', login)
+router.post('/register', checkRegisterData, checkUserExist, hashPassword, register)
+router.post('/login', checkLoginData, comparePassword, createToken, login)
 
 export default router
