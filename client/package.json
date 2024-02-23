@@ -1,7 +1,7 @@
 {
   "name": "density-debris",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,8 +10,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.4.1",
     "@astrojs/check": "^0.5.5",
-    "typescript": "^5.3.3"
+    "@astrojs/react": "^3.0.10",
+    "@astrojs/tailwind": "^5.1.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "astro": "^4.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.1",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }
